@@ -1,11 +1,21 @@
 pipeline {
     agent any
 
+    parameters {
+        string(name: 'namespace', defaultValue: 'dev-huy', description: 'namespace Kubernetes')
+        string(name: 'api_gateway', defaultValue: 'main', description: 'branch api-gateway')
+        string(name: 'config_server', defaultValue: 'main')
+        string(name: 'customers_service', defaultValue: 'main')
+        string(name: 'discovery_server', defaultValue: 'main')
+        string(name: 'vets_service', defaultValue: 'main')
+        string(name: 'visits_service', defaultValue: 'main')
+    }
+    
     environment {
         HELM_RELEASE = "petclinic"
-        HELM_CHART_REPO = "https://github.com/HCMUS-DevOps-Projects/project02-k8s.git"
-        GIT_REPO_CODE = "https://github.com/HCMUS-DevOps-Projects/project02.git"
-        DOCKER_USER = "tlvu2004"
+        HELM_CHART_REPO = "https://github.com/minhhuy27/Lab02-DevOps-CD.git"
+        GIT_REPO_CODE = "https://github.com/minhhuy27/Lab02-DevOps.git"
+        DOCKER_USER = "minhhuy27"
         KUBECONFIG = '/var/lib/jenkins/.kube/config'
     }
 
