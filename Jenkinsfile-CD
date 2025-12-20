@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     parameters {
-        string(name: 'namespace', defaultValue: 'dev-huy', description: 'namespace Kubernetes')
+        string(name: 'namespace', defaultValue: 'dev', description: 'namespace Kubernetes')
         string(name: 'api_gateway', defaultValue: 'main', description: 'branch api-gateway')
         string(name: 'config_server', defaultValue: 'main')
         string(name: 'customers_service', defaultValue: 'main')
@@ -10,7 +10,7 @@ pipeline {
         string(name: 'vets_service', defaultValue: 'main')
         string(name: 'visits_service', defaultValue: 'main')
     }
-    
+
     environment {
         HELM_RELEASE = "petclinic"
         HELM_CHART_REPO = "https://github.com/minhhuy27/Lab02-DevOps-CD.git"
