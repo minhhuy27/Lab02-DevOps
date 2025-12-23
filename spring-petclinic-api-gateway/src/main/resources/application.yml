@@ -16,24 +16,27 @@ spring:
             statuses: SERVICE_UNAVAILABLE
             methods: POST
       routes:
-        - id: vets-service
-          uri: lb://vets-service
-          predicates:
-            - Path=/api/vet/**
-          filters:
-            - StripPrefix=2
-        - id: visits-service
-          uri: lb://visits-service
-          predicates:
-            - Path=/api/visit/**
-          filters:
-            - StripPrefix=2
         - id: customers-service
-          uri: lb://customers-service
+          uri: http://customers-service.dev.svc.cluster.local:8081
           predicates:
             - Path=/api/customer/**
           filters:
             - StripPrefix=2
+
+        - id: visits-service
+          uri: http://visits-service.dev.svc.cluster.local:8082
+          predicates:
+            - Path=/api/visit/**
+          filters:
+            - StripPrefix=2
+
+        - id: vets-service
+          uri: http://vets-service.dev.svc.cluster.local:8083
+          predicates:
+            - Path=/api/vet/**
+          filters:
+            - StripPrefix=2
+
         - id: genai-service
           uri: lb://genai-service
           predicates:
