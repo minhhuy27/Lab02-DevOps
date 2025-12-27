@@ -16,6 +16,7 @@
 package org.springframework.samples.petclinic.customers.web;
 
 import io.micrometer.core.annotation.Timed;
+import jakarta.servlet.http.HttpServletResponse;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Min;
 import org.slf4j.Logger;
@@ -26,6 +27,7 @@ import org.springframework.samples.petclinic.customers.model.Owner;
 import org.springframework.samples.petclinic.customers.model.OwnerRepository;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 
@@ -89,7 +91,7 @@ class OwnerResource {
      * Test endpoint to return custom error code.
      */
     @GetMapping("/error")
-    public void manualError(javax.servlet.http.HttpServletResponse response) throws java.io.IOException {
+    public void manualError(HttpServletResponse response) throws IOException {
         response.sendError(501, "Service Mesh Test Error");
     }
 
