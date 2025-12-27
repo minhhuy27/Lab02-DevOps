@@ -78,6 +78,22 @@ class OwnerResource {
     }
 
     /**
+     * Test endpoint to force 500 for retry/mTLS demos.
+     */
+    @GetMapping("/fail")
+    public String triggerError() {
+        throw new RuntimeException("Simulated 500 Internal Server Error");
+    }
+
+    /**
+     * Test endpoint to return custom error code.
+     */
+    @GetMapping("/error")
+    public void manualError(javax.servlet.http.HttpServletResponse response) throws java.io.IOException {
+        response.sendError(501, "Service Mesh Test Error");
+    }
+
+    /**
      * Update Owner
      */
     @PutMapping(value = "/{ownerId}")
