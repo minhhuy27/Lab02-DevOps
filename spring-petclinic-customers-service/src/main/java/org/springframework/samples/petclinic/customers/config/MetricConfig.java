@@ -6,7 +6,6 @@ import org.springframework.boot.actuate.autoconfigure.metrics.MeterRegistryCusto
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-//Cmt
 @Configuration
 public class MetricConfig {
 
@@ -21,3 +20,4 @@ public class MetricConfig {
   }
 
 }
+//cmt
