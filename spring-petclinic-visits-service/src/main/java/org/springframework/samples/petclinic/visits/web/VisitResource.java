@@ -80,12 +80,12 @@ class VisitResource {
     ) {
     }
 
-    // // --- ĐOẠN CODE THÊM VÀO ĐỂ TEST RETRY ---
-    // @org.springframework.web.bind.annotation.GetMapping("/oops")
-    // public String triggerHardCodeError() {
-    //     System.out.println(">>> [TEST] Endpoint /oops duoc goi. Chuan bi nem Exception!");
-    //     throw new RuntimeException("Kiem thu Retry Policy - Loi 500 do nguoi dung tao ra!");
-    // }
-    // // ----------------------------------------
-
+    // --- ĐOẠN CODE THÊM VÀO ĐỂ TEST RETRY ---
+    @org.springframework.web.bind.annotation.GetMapping("/oops")
+    public String triggerHardCodeError() {
+        System.out.println(">>> [TEST] Endpoint /oops duoc goi. Chuan bi nem Exception!");
+        throw new RuntimeException("Kiem thu Retry Policy - Loi 500 do nguoi dung tao ra!");
+    }
+    // ----------------------------------------
+    
 }
