@@ -108,5 +108,3 @@ class OwnerResource {
         ownerRepository.save(ownerModel);
     }
 }
-//
-//
