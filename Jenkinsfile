@@ -253,6 +253,27 @@ pipeline {
                 }
             }
         }
+
+        stage('5. DAST - OWASP ZAP Scan') {
+            steps {
+                script {
+                    sh 'chmod 777 .'
+                    // Chạy ZAP dưới dạng container để quét URL ứng dụng
+                    // -t: URL mục tiêu, -r: xuất báo cáo ra file html
+                    sh """
+                    docker run --rm --user root -v ${WORKSPACE}:/zap/wrk:rw -t ghcr.io/zaproxy/zaproxy:stable zap-baseline.py \
+                        -t http://34.67.163.58:8080 \
+                        -r zap_report.html || true
+                    """
+                }
+            }
+            post {
+                always {
+                    // Lưu file báo cáo vào Jenkins để tải về xem
+                    archiveArtifacts artifacts: 'zap_report.html', allowEmptyArchive: true
+                }
+            }
+        }
     }
     
     
