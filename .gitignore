@@ -24,3 +24,5 @@ generated/
 
 lab02.txt
 my-cluster-backup.yaml
+my-cluster-backup-ns-dev.yaml
+my-cluster-backup-aws.yaml
